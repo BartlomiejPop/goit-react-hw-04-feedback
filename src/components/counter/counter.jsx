@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import Statistics from 'react-dom';
 
 export class Counter extends Component {
   state = {
@@ -7,7 +8,7 @@ export class Counter extends Component {
     neutral: 0,
     bad: 0,
     total: 0,
-    percentage: 0,
+    positive: 0,
   };
 
   addGoodFeedback(evt) {
@@ -15,6 +16,11 @@ export class Counter extends Component {
     console.log('this.props: ', this.state.good); // Error: cannot read props of undefined
     this.setState({ good: this.state.good + 1 });
     this.setState({ total: this.state.total + 1 });
+    this.setState(prevState => {
+      return {
+        positive: (prevState.good / prevState.total) * 100,
+      };
+    });
     // this.setState({
     //   percentage: this.state.good + this.state.neutral + this.state.bad,
     // });
@@ -25,6 +31,11 @@ export class Counter extends Component {
     console.log('this.props: ', this.state.bad); // Error: cannot read props of undefined
     this.setState({ bad: this.state.bad + 1 });
     this.setState({ total: this.state.total + 1 });
+    this.setState(prevState => {
+      return {
+        positive: (prevState.good / prevState.total) * 100,
+      };
+    });
   }
 
   addNeutralFeedback(evt) {
@@ -32,6 +43,11 @@ export class Counter extends Component {
     console.log('this.props: ', this.state.bad); // Error: cannot read props of undefined
     this.setState({ neutral: this.state.neutral + 1 });
     this.setState({ total: this.state.total + 1 });
+    this.setState(prevState => {
+      return {
+        positive: (prevState.good / prevState.total) * 100,
+      };
+    });
   }
 
   render() {
@@ -39,6 +55,7 @@ export class Counter extends Component {
 
     return (
       <div>
+        <span>Please leave feedback</span>
         <button type="button" onClick={this.addGoodFeedback.bind(this)}>
           Good
         </button>
@@ -49,11 +66,12 @@ export class Counter extends Component {
           Bad
         </button>
 
+        <span>Statistics</span>
         <span>Good: {this.state.good} </span>
         <span>Neutral: {this.state.neutral} </span>
         <span>Bad: {this.state.bad} </span>
         <span>Total: {this.state.total}</span>
-        <span>%</span>
+        <span>Positive feedback: {this.state.positive}%</span>
       </div>
     );
   }
