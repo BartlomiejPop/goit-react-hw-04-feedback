@@ -8,11 +8,11 @@ export const Statistics = ({
   return (
     <>
       <span>Statistics</span>
-      <span>Good: {this.state.good} </span>
-      <span>Neutral: {this.state.neutral} </span>
-      <span>Bad: {this.state.bad} </span>
-      <span>Total: {this.state.total}</span>
-      <span>Positive feedback: {this.state.positive}%</span>
+      <span>Good: {good} </span>
+      <span>Neutral: {neutral} </span>
+      <span>Bad: {bad} </span>
+      <span>Total: {total}</span>
+      <span>Positive feedback: {positivePercentage}%</span>
     </>
   );
 };
