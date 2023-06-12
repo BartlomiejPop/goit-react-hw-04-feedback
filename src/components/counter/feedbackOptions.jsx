@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import Statistics from 'react-dom';
-import { addGoodFeedback } from '../App';
+import React from 'react';
+// import ReactDOM from 'react-dom';
+// import Statistics from 'react-dom';
+// import { addGoodFeedback } from '../App';
 import styles from './feedbackOptions.module.css';
+import PropTypes from 'prop-types';
 
 // class Counter extends Component {
 //   state = {
@@ -71,24 +72,12 @@ export const FeedbackOptions = ({
       <button className={styles.btn} type="button" onClick={addBadFeedback}>
         Bad
       </button>
-
-      {/* <span>Statistics</span>
-      <span>Good: {this.state.good} </span>
-      <span>Neutral: {this.state.neutral} </span>
-      <span>Bad: {this.state.bad} </span>
-      <span>Total: {this.state.total}</span>
-      <span>Positive feedback: {this.state.positive}%</span> */}
     </div>
   );
 };
-// }
 
-// ReactDOM.render(<Counter step={5} />, document.getElementById('root'));
-
-// export const FeedbackOptions = () => {
-//   return (
-//     <div>
-//       <Counter />
-//     </div>
-//   );
-// };
+FeedbackOptions.propTypes = {
+  addGoodFeedback: PropTypes.func.isRequired,
+  addBadFeedback: PropTypes.func.isRequired,
+  addNeutralFeedback: PropTypes.func.isRequired,
+};

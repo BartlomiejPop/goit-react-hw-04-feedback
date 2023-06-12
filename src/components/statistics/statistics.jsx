@@ -1,5 +1,6 @@
 import { NotificationMessage } from './NotificationMessage';
 import styles from './statistics.module.css';
+import PropTypes from 'prop-types';
 export const Statistics = ({
   good,
   neutral,
@@ -21,4 +22,12 @@ export const Statistics = ({
       </span>
     </div>
   );
+};
+
+Statistics.propTypes = {
+  good: PropTypes.number,
+  neutral: PropTypes.number,
+  bad: PropTypes.number,
+  total: PropTypes.number,
+  positivePercentage: PropTypes.number,
 };
