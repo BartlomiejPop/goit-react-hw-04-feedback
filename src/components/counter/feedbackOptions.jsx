@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Statistics from 'react-dom';
+import { addGoodFeedback } from '../App';
+import styles from './feedbackOptions.module.css';
 
 // class Counter extends Component {
 //   state = {
@@ -59,15 +61,14 @@ export const FeedbackOptions = ({
   addNeutralFeedback,
 }) => {
   return (
-    <div>
-      <span>Please leave feedback</span>
-      <button type="button" onClick={addGoodFeedback}>
+    <div className={styles.options}>
+      <button className={styles.btn} type="button" onClick={addGoodFeedback}>
         Good
       </button>
-      <button type="button" onClick={addNeutralFeedback}>
+      <button className={styles.btn} type="button" onClick={addNeutralFeedback}>
         Neutral
       </button>
-      <button type="button" onClick={addBadFeedback}>
+      <button className={styles.btn} type="button" onClick={addBadFeedback}>
         Bad
       </button>
 

@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { FeedbackOptions } from './counter/feedbackOptions.jsx';
 import { Statistics } from './statistics/statistics.jsx';
+import { SectionTitle } from './sectionTitle/SectionTitle.jsx';
 
-class App extends Component {
+export class App extends Component {
   state = {
     good: 0,
     neutral: 0,
@@ -12,7 +13,7 @@ class App extends Component {
     positive: 0,
   };
 
-  addGoodFeedback(evt) {
+  addGoodFeedback = evt => {
     console.log('Increment button was clicked!', evt); // działa
     console.log('this.props: ', this.state.good); // Error: cannot read props of undefined
     this.setState({ good: this.state.good + 1 });
@@ -25,9 +26,9 @@ class App extends Component {
     // this.setState({
     //   percentage: this.state.good + this.state.neutral + this.state.bad,
     // });
-  }
+  };
 
-  addBadFeedback(evt) {
+  addBadFeedback = evt => {
     console.log('Decrement button was clicked!', evt); // działa
     console.log('this.props: ', this.state.bad); // Error: cannot read props of undefined
     this.setState({ bad: this.state.bad + 1 });
@@ -37,9 +38,9 @@ class App extends Component {
         positive: (prevState.good / prevState.total) * 100,
       };
     });
-  }
+  };
 
-  addNeutralFeedback(evt) {
+  addNeutralFeedback = evt => {
     console.log('Decrement button was clicked!', evt); // działa
     console.log('this.props: ', this.state.bad); // Error: cannot read props of undefined
     this.setState({ neutral: this.state.neutral + 1 });
@@ -49,12 +50,13 @@ class App extends Component {
         positive: (prevState.good / prevState.total) * 100,
       };
     });
-  }
+  };
   render() {
     // export const App = () => {
     // const { state } = this.props;
     return (
       <div>
+        <SectionTitle>Please leave feedback</SectionTitle>
         <FeedbackOptions
           addGoodFeedback={this.addGoodFeedback}
           addBadFeedback={this.addBadFeedback}
@@ -65,7 +67,7 @@ class App extends Component {
           neutral={this.state.neutral}
           bad={this.state.bad}
           total={this.state.total}
-          positivePercentage={this.state.positivePercentage}
+          positivePercentage={this.state.positive}
         />
       </div>
     );
