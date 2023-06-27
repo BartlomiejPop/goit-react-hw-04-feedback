@@ -1,13 +1,7 @@
 import { NotificationMessage } from './NotificationMessage';
 import styles from './statistics.module.css';
 import PropTypes from 'prop-types';
-export const Statistics = ({
-  good,
-  neutral,
-  bad,
-  total,
-  positivePercentage,
-}) => {
+export const Statistics = ({ good, neutral, bad, total, positive }) => {
   return (
     <div className={styles.statistics}>
       <span className={styles.bold}>Statistics:</span>
@@ -18,7 +12,7 @@ export const Statistics = ({
       <span className={styles.bold}>{total > 0 && `Bad: ${bad}`} </span>
       <span className={styles.bold}>{total > 0 && `Total: ${total}`}</span>
       <span className={styles.bold}>
-        {total > 0 && `Positive feedback: ${positivePercentage}%`}
+        {total > 0 && `Positive feedback: ${positive}%`}
       </span>
     </div>
   );
@@ -29,5 +23,5 @@ Statistics.propTypes = {
   neutral: PropTypes.number,
   bad: PropTypes.number,
   total: PropTypes.number,
-  positivePercentage: PropTypes.number,
+  positive: PropTypes.number,
 };

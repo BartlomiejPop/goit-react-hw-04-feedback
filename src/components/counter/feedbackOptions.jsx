@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 
 export const FeedbackOptions = ({
   addGoodFeedback,
-  addBadFeedback,
   addNeutralFeedback,
+  addBadFeedback,
 }) => {
   return (
     <div className={styles.options}>
